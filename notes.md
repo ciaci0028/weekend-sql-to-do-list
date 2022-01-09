@@ -2,17 +2,22 @@
 
 To Do:
 [ ] Create files
-    [ ] gitignore
-    [ ] index.html
-    [ ] public folder
-        [ ] client.js
-        [ ] style.css
-    [ ] server folder
-        [ ] server.js
-    [ ] routers
-        [ ] task.router.js
-    [ ] modules
-        [ ] pool.js
+    [x] gitignore
+    [x] index.html
+        [ ] setup and sourcing in
+    [x] public folder
+        [x] client.js
+            [ ] setup
+        [x] style.css
+    [x] server folder
+        [x] server.js
+            [ ] setup
+    [x] routers
+        [x] task.router.js
+            [ ] setup
+    [x] modules
+        [x] pool.js
+            [ ] setup
 [ ] Front end experience
 [ ] User creates a task
     [ ] Ajax post request
