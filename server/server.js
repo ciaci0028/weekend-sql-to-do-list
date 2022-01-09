@@ -4,7 +4,7 @@ console.log('server.js working');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 const taskRouter = require('./routes/task.router');
 
 

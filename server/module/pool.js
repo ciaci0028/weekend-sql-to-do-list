@@ -1,11 +1,10 @@
 const pg = require('pg');
 
+// database connection
 const config = {
-    database: 'awesome_reads', 
+    database: 'todo_list', 
     host: 'localhost', 
     port: 5432, 
-    max: 10, 
-    idleTimeoutMillis: 30000 
 };
 
 const pool = new pg.Pool(config);
