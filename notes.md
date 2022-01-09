@@ -1,23 +1,23 @@
 ### Task: To Do List
 
 To Do:
-[ ] Create files
+[x] Create files
     [x] gitignore
     [x] index.html
-        [ ] setup and sourcing in
+        [x] setup and sourcing in
     [x] public folder
         [x] client.js
-            [ ] setup
+            [x] setup
         [x] style.css
     [x] server folder
         [x] server.js
-            [ ] setup
+            [x] setup
     [x] routers
         [x] task.router.js
-            [ ] setup
+            [x] setup
     [x] modules
         [x] pool.js
-            [ ] setup
+            [x] setup
 [ ] Front end experience
 [ ] User creates a task
     [ ] Ajax post request
