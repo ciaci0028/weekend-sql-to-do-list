@@ -2,7 +2,7 @@ $(document).ready( function() {
     console.log('client.js working');
 
     //Click listeners
-    // clickListeners();
+    clickListeners();
 
     // Render function
     getTasks();
@@ -11,7 +11,7 @@ $(document).ready( function() {
 function clickListeners(){
     console.log('listening for clicks');
 
-    $(document).on('click', '#submitBtn', addTasks());
+    $('#taskForm').on('submit', addTasks);
 }; // End of clickListeners function
 
 // Render tasks function
@@ -27,11 +27,17 @@ function renderTasks(tasks) {
             <tr>
                 <td>${task.task}</td>
                 <td>${task.notes}</td>
-                <td>${task.completed}</td>
+                <td>${task.completion}</td>
+                <td>
+                    <button class="completeBtn">
+                        Completed
+                    </button>
+                </td>
                 <td>
                     <button class="deleteBtn">
                         Delete
                     </button>
+                </td>
             </tr>
         `);
     }
@@ -61,7 +67,7 @@ function addTasks(){
     let newTask = {
         task: $('#taskIn').val(),
         notes: $('#notesIn').val(),
-    }
+    };
 
     $.ajax({
         method: 'POST',
