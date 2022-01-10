@@ -28,14 +28,50 @@ taskRouter.get('/', (req, res) => {
 
     let queryText = `SELECT * FROM "todo"`
 
-    pool.query(queryText).then((result) =>{
-        res.sendStatus(result.rows);
+    pool.query(queryText)
+        .then((dbRes) => {
+            res.send(dbRes.rows);
+            console.log('success');
     })
     .catch((err) => {
         console.log('error getting tasks', err);
         res.sendStatus(500);
     });  
 }); // End of get endpoint
+
+// Post endpoint
+taskRouter.post('/', (req, res) => {
+    console.log('in post /tasks', req.body);
+
+    // Setting req.body to a new variable
+    let newTask = req.body;
+
+    // Query text to insert the new task into the database
+    let queryText = `
+        INSERT INTO "todo"
+            ("task", "notes", "completion" )
+        VALUES ($1, $2, $3)
+    `;
+
+    // check if the task is completed
+    let isTaskComplete = (newTask.completed === 'true');
+    
+    // query params so people can't break it
+    let queryParams = [
+        newTask.task,
+        newTask.notes,
+        isTaskComplete
+    ];
+
+    // verify it's been added to the database
+    pool.query(queryText, queryParams)
+        .then(() => {
+            res.sendStatus(200);
+        })
+        .catch((err) => {
+            console.log('Error adding new koala', err);
+        });
+}); // End POST endpoint 
 
 
 // Export router for use

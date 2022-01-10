@@ -2,7 +2,7 @@ $(document).ready( function() {
     console.log('client.js working');
 
     //Click listeners
-    clickListeners();
+    // clickListeners();
 
     // Render function
     getTasks();
@@ -14,8 +14,9 @@ function clickListeners(){
     $(document).on('click', '#submitBtn', addTasks());
 }; // End of clickListeners function
 
+// Render tasks function
 function renderTasks(tasks) {
-    console.log('in render function');
+    console.log('in render function', tasks);
 
     // Empty the table
     $('#taskTable').empty();
@@ -26,6 +27,7 @@ function renderTasks(tasks) {
             <tr>
                 <td>${task.task}</td>
                 <td>${task.notes}</td>
+                <td>${task.completed}</td>
                 <td>
                     <button class="deleteBtn">
                         Delete
@@ -45,7 +47,7 @@ function getTasks(){
     })
     .then((res) => {
         console.log('get response', res);
-        renderTasks();
+        renderTasks(res);
     })
     .catch((err) => {
         console.log('error with getting tasks', err);
