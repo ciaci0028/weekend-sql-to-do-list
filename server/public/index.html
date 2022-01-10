@@ -5,19 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/styles.css">
-    <script src="scripts/client.js"></script>
-    <script src="../server.js"></script>
+    <script src="./vendors/jquery.js" charset="utf-8"></script>
+    <script src="scripts/client.js" charset="utf-8"></script>
     <title>To Do List</title>
 </head>
 <body>
+    <div>
+        <h1>Insert Task Below</h1>
+        <input id="taskIn" type="text" value="" placeholder="Task">
+        <input id="notesIn" type="text" value="" placeholder="Notes">
+        <button id="submitBtn">Submit</button>
+    </div>
     <table>
-        <h1>To-Do List</h1>
+        <h2>To-Do List</h2>
         <thead>
             <th>Task</th>
-            <th>Completed</th>
             <th>Notes</th>
+            <th>Completed</th>
         </thead>
-        <tbody>
+        <tbody id="taskTable">
             
         </tbody>
     </table>
