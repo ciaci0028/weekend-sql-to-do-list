@@ -33,9 +33,9 @@ function renderTasks(tasks) {
     for (let task of tasks) {
         $('#taskTable').append(`
             <tr data-id=${task.id}>
-                <td>${task.task}</td>
-                <td>${task.notes}</td>
-                <td>${task.completion}</td>
+                <td class="task">${task.task}</td>
+                <td class="notes">${task.notes}</td>
+                <td class="completion">${task.completion}</td>
                 <td>
                     <button class="completeBtn">
                         Completed
@@ -115,5 +115,25 @@ function deleteTasks(){
 function modifyTasks() {
     console.log('in modify tasks')
 
+    // Setting variable to get id
+    let taskId = $(this).parents('tr').data('id');
+
+    // Gathering other information via variables
+    // let taskTask = $(this).parent().siblings('.task').text();
+    // let taskNotes = $(this).parent().siblings('.notes').text();
+    // let taskCompletion = $(this).parent().siblings('.completion').text();
+    
+    // Ajax request
+    $.ajax({
+        method: "PUT",
+        url: `/tasks/${taskId}`
+    })
+    .then((res) => {
+        console.log('completion success', res)
+        getTasks();
+    })
+    .catch((err) => {
+        console.log('error modifying task', err);
+    });
 
 }; // End of modifyTasks function

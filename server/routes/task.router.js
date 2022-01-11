@@ -100,6 +100,33 @@ taskRouter.delete ('/:id', (req, res) => {
 
 }); // End of delete endpoint
 
+// Put endpoint
+taskRouter.put('/:id', (req, res) => {
+    console.log('in put /tasks', req.params.id);
+
+    // Convo with db
+    let queryText = `
+        UPDATE "todo"
+        SET "completion" = true
+        WHERE "id" = $1
+    `;
+
+    // secrecy
+    let queryParams = [
+        req.params.id
+    ];
+
+    pool.query(queryText, queryParams)
+        .then( (dbRes) => {
+            console.log('dbRes', dbRes.rows);
+            res.sendStatus(201);
+        })
+        .catch((err) => {
+            console.log('put error', err);
+            res.sendStatus(500);
+        });
+}); // End of put endpoint
+
 
 // Export router for use
 module.exports = taskRouter;
