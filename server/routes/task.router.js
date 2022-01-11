@@ -1,4 +1,5 @@
 const express = require('express');
+// const router = require('express').Router();
 const taskRouter = express.Router();
 // const pg = require('pg');
 const pool = require('../module/pool');
@@ -26,17 +27,17 @@ const pool = require('../module/pool');
 taskRouter.get('/', (req, res) => {
     console.log('in get /tasks');
 
-    let queryText = `SELECT * FROM "todo"`
+    let queryText = `SELECT * FROM "todo"`;
 
     pool.query(queryText)
         .then((dbRes) => {
             res.send(dbRes.rows);
-            console.log('success');
-    })
-    .catch((err) => {
-        console.log('error getting tasks', err);
-        res.sendStatus(500);
-    });  
+            console.log('success', dbRes.rows);
+        })
+        .catch((err) => {
+            console.log('error getting tasks', err);
+            res.sendStatus(500);
+        });  
 }); // End of get endpoint
 
 // Post endpoint
@@ -72,6 +73,32 @@ taskRouter.post('/', (req, res) => {
             console.log('Error adding new koala', err);
         });
 }); // End POST endpoint 
+
+// Delete endpoint
+taskRouter.delete ('/:id', (req, res) => {
+    console.log('in delete /tasks', req.params.id);
+
+    // Create request for database
+    let queryText = `
+        DELETE FROM "todo"
+        WHERE id = $1;
+    `;
+
+    // Make it secret so people can't break it
+    let queryParams = [
+        req.params.id
+    ];
+
+    pool.query(queryText, queryParams)
+        .then( () => {
+            res.sendStatus(200);
+        })
+        .catch((err) => {
+            console.log('failed to delete', err);
+            res.sendStatus(500);
+        });
+
+}); // End of delete endpoint
 
 
 // Export router for use

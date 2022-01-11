@@ -11,7 +11,12 @@ $(document).ready( function() {
 function clickListeners(){
     console.log('listening for clicks');
 
+    // Submit listener
     $('#taskForm').on('submit', addTasks);
+
+    // Delete button
+    $(document).on('click', '.deleteBtn', deleteTasks);
+
 }; // End of clickListeners function
 
 // Render tasks function
@@ -24,7 +29,7 @@ function renderTasks(tasks) {
     // Render each new task
     for (let task of tasks) {
         $('#taskTable').append(`
-            <tr>
+            <tr data-id=${task.id}>
                 <td>${task.task}</td>
                 <td>${task.notes}</td>
                 <td>${task.completion}</td>
@@ -86,15 +91,19 @@ function addTasks(){
 function deleteTasks(){
     console.log('in deleteTasks function');
 
+    // Setting variable to get id
+    let taskId = $(this).parents('tr').data('id');
+
     $.ajax({
         method: 'DELETE',
-        url: '/tasks',
+        url: `/tasks/${taskId}`,
     })
     .then((res) => {
         console.log('delete response', res);
+        getTasks();
     })
     .catch((err) => {
-        console.log('error with deleting task', res);
+        console.log('error with deleting task', err);
         
     })
 }; // End of deleteTasks function
