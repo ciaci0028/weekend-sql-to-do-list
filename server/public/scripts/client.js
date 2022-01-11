@@ -17,6 +17,9 @@ function clickListeners(){
     // Delete button
     $(document).on('click', '.deleteBtn', deleteTasks);
 
+    // Complete button listener
+    $(document).on('click', '.completeBtn', modifyTasks)
+
 }; // End of clickListeners function
 
 // Render tasks function
@@ -107,3 +110,10 @@ function deleteTasks(){
         
     })
 }; // End of deleteTasks function
+
+// PUT Ajax
+function modifyTasks() {
+    console.log('in modify tasks')
+
+
+}; // End of modifyTasks function
