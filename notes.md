@@ -19,24 +19,24 @@ To Do:
         [x] pool.js
             [x] setup
 [ ] Front end experience
-[ ] User creates a task
-    [ ] Ajax post request
-    [ ] post server endpoint
-    [ ] index.html input fields
-[ ] Task gets stored into database/SQL
-    [ ] create table
-    [ ] task name, completed
-[ ] Front end refreshes to show all tasks 
-    [ ] ajax get request
-    [ ] get server endpoint
-    [ ] submit function
-[ ] Complete/delete option on each task
-    [ ] ajax delete request
-    [ ] delete server endpoint
-[ ] When task is complete, it's visual representation changes on the front end (checked off)
+[x] User creates a task
+    [x] Ajax post request
+    [x] post server endpoint
+    [x] index.html input fields
+[x] Task gets stored into database/SQL
+    [x] create table
+    [x] task name, completed
+[x] Front end refreshes to show all tasks 
+    [x] ajax get request
+    [x] get server endpoint
+    [x] submit function
+[x] Complete/delete option on each task
+    [x] ajax delete request
+    [x] delete server endpoint
+[x] When task is complete, it's visual representation changes on the front end (checked off)
     [ ] CSS styling
-[ ] Task completion also stored in database
-    [ ] incorporating SQL
-[ ] Deleting a task removes it from front end and database
+[x] Task completion also stored in database
+    [x] incorporating SQL
+[x] Deleting a task removes it from front end and database
 [ ] CSS styling
     [ ] Change background color to show completion
